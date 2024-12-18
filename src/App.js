@@ -9,7 +9,7 @@ const Main = () =>
       <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
-          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
+          <iframe allow="microphone,notifications" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@ const Hello = () => {
       <div className='flex-item'>
         <h1 style={{'text-align': 'center'}}>Conversation Render</h1>
         <div className='container'>
-          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
+          <iframe allow="microphone,notifications" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@ function App() {
   if(isRenderer) {
     return <Hello />
   }
-  
+
   return (
     <Main />
   );
