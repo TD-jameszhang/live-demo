@@ -13,13 +13,7 @@ const Main = () =>
       <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
-          <iframe src='http://localhost:3000/demo?mode=host' title='conversation' />
-        </div>
-      </div>
-      <div className='flex-item'>
-        <h1>Conversation Render</h1>
-        <div className='container'>
-          <iframe src='http://localhost:3000/demo?mode=renderer' title='conversation' />
+          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
         </div>
       </div>
     </div>
@@ -42,11 +36,13 @@ const Hello = () => {
     // getBroadcastTab().enableDebug()
   }, [])
   return <div>
-  <div>
-    <a href='/'> back </a>
-  </div>
-  <h1>Hello {getParams().mode}</h1>
-</div>
+      <div className='flex-item'>
+        <h1 style={{'text-align': 'center'}}>Conversation Render</h1>
+        <div className='container'>
+          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
+        </div>
+      </div>
+    </div>
 }
 
 function getParams(){

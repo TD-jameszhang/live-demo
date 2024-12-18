@@ -9,11 +9,11 @@
 }
 
 .flex-item{
-  width: 50%;
+  width: 100%;
 }
 
 .flex-item .container{
-  height: 600px;
+  height: 800px;
   padding: 6px;
 }
 
