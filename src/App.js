@@ -8,12 +8,12 @@ const Main = () =>
       <div>
         <a href='/demo'> demo </a>
       </div>
-      {/* <div className='flex-item'>
+      <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
           <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
         </div>
-      </div> */}
+      </div>
     </div>
 
 
