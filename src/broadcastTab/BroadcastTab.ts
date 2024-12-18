@@ -40,13 +40,15 @@ class BroadcastTabManager {
     return Boolean(this.mode)
   }
 
-  get initd(){
-    return Boolean(this.channel)
-  }
-
-  fireRendererLoaded() {
+  fireRendererSyncAll() {
     if (this.isRenderer) {
       this.sendMessage({ type: Command.syncAll, storeId: '*' })
+    }
+  }
+
+  rendererLoaded(){
+    if (this.isRenderer) {
+      this.sendMessage({ type: Command.rendererLoaded, storeId: '*' })
     }
   }
 
@@ -150,14 +152,17 @@ class BroadcastTabManager {
     this.initInfo()
 
     if (this.isHost) {
-
       this.sendMessage({ type: Command.hostLoaded })
       this.sendMessage({
         type: Command.updateBroadcastTabInfo,
-        payload: broadcastHostTabInfo
       })
 
       this.onmessage(data => {
+        // if host is loaded from another tab, close this tab
+        if (data.type === Command.hostLoaded && data.info.id !== this.info.id) {
+          this.close()
+        }
+
         if (data.type === Command.heartbeat) {
           this.sendMessage({ type: Command.ok })
         }
@@ -165,7 +170,6 @@ class BroadcastTabManager {
         if(data.type === Command.syncBroadcastTabInfo) {
           this.sendMessage({
             type: Command.updateBroadcastTabInfo,
-            payload: broadcastHostTabInfo
           })
         }
       })
@@ -173,18 +177,18 @@ class BroadcastTabManager {
     if (this.isRenderer) {
       this.onmessage(data => {
         if (data.type === Command.hostLoaded) {
-          this.fireRendererLoaded()
+          this.fireRendererSyncAll()
         }
 
         if (data.type === Command.updateBroadcastTabInfo) {
-          const Info = data.payload as Info
+          const Info = data.info as Info
   
           broadcastHostTabInfo.id = Info.id
           broadcastHostTabInfo.mode = Info.mode
         }
       })
 
-      this.fireRendererLoaded()
+      this.rendererLoaded()
     }
     this.listenMessages()
     this.listenErrors()
@@ -244,7 +248,7 @@ class BroadcastTabManager {
 
   private sendMessage(payload: Payload) {
     if (this.channel) {
-      this.channel.postMessage({info: this.info, ...payload})
+      this.channel.postMessage({info: this.info, ...payload, time: new Date().getTime()})
       this.debugLog('sendMessage', {info: this.info, ...payload})
     }
   }

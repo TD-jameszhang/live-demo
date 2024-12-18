@@ -7,19 +7,16 @@ console.log(getBroadcastTab())
 
 const Main = () => 
   <div className="App">
-      <div>
-        <a href='/demo'> demo </a>
-      </div>
       <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
-          <iframe src='http://localhost:3000/demo?mode=host' title='conversation' />
+          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
         </div>
       </div>
       <div className='flex-item'>
         <h1>Conversation Render</h1>
         <div className='container'>
-          <iframe src='http://localhost:3000/demo?mode=renderer' title='conversation' />
+          <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
         </div>
       </div>
     </div>
@@ -39,7 +36,7 @@ const Hello = () => {
   useEffect(() => {
     if(getBroadcastTab.initd) return
     getBroadcastTab().init(getParams().mode)
-    // getBroadcastTab().enableDebug()
+    getBroadcastTab().enableDebug()
   }, [])
   return <div>
   <div>

@@ -1,4 +1,7 @@
-export type Mode = 'host' | 'renderer'
+import type { ImportGlobOptions } from 'vite/types/importGlob'
+
+
+export type Mode = 'host' | 'renderer' | ImportGlobOptions<boolean, string>
 
 export const ErrorCodes = {
   hostIsNotAlive: 40001,
@@ -19,6 +22,7 @@ export type ArgsType = (prevState: AnyState) => AnyState | AnyState
 export type Info = { id: string; mode: Mode }
 
 export type Payload = {
+  info?: Info,
   storeId?: string
   type: typeof Command[keyof typeof Command]
   payload?: ArgsType | AnyState | Info
