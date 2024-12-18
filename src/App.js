@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 
 
 const Main = () => 
@@ -33,7 +32,7 @@ const Hello = () => {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{v7_startTransition: true}}>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/demo" element={<Hello />} />
