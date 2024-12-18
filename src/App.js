@@ -1,9 +1,7 @@
 import './App.css';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { getBroadcastTab } from './broadcastTab/BroadcastTab'
 // import { useEffect } from 'react';
 
-console.log(getBroadcastTab())
 
 const Main = () => 
   <div className="App">
