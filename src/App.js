@@ -9,7 +9,7 @@ const Main = () =>
       <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
-          <iframe allow="microphone,notifications" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
+          <iframe sandbox='allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-to-custom-protocols allow-downloads' allow="microphone;speaker;autoplay;fullscreen;clipboard-write;camera" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation' title='conversation' />
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@ const Hello = () => {
       <div className='flex-item'>
         <h1 style={{'text-align': 'center'}}>Conversation Render</h1>
         <div className='container'>
-          <iframe allow="microphone,notifications" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
+          <iframe sandbox='allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-to-custom-protocols allow-downloads' allow="microphone;speaker;autoplay;fullscreen;clipboard-write;camera" src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=renderer' title='conversation' />
         </div>
       </div>
     </div>
