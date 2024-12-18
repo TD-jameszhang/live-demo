@@ -6,15 +6,19 @@ const Main = () =>
       <div>
         <a href='/demo'> demo </a>
       </div>
-      {/* <div className='flex-item'>
+      <div className='flex-item'>
         <h1>Conversation Host</h1>
         <div className='container'>
           <iframe src='https://ccorecn.trytalkdesk.com/atlas/apps/conversation?mode=host' title='conversation' />
         </div>
-      </div> */}
+      </div>
     </div>
 
 
+function getParameterByName(name, url = window.location.search) {
+  const searchParams = new URLSearchParams(url);
+  return searchParams.get(name);
+}
 
 
 const Hello = () => {
@@ -30,6 +34,11 @@ const Hello = () => {
 
 
 function App() {
+  const isRenderer = getParameterByName('mode') === 'renderer';
+  if(isRenderer) {
+    return <Hello />
+  }
+  
   return (
     <Main />
   );
