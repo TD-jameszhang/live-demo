@@ -3,19 +3,21 @@ import { useState } from 'react';
 
 
 const Main = () => {
-  const [url, setUrl] = useState('https://ccorecn.trytalkdesk.com/atlas/apps/conversation');
+  const accountName = window.localStorage.getItem('accountName') || 'email-prod';
+  const [account, setAccount] = useState(accountName);
   const [rendererList, setRendererList] = useState([]);
 
-  const host = url + '?mode=host';
-  const renderer = url + '?mode=renderer';
+  const host = `https://${account}.trytalkdesk.com/atlas/apps/conversation?mode=host`;
+  const renderer = `https://${account}.trytalkdesk.com/atlas/headless/conversationmode=renderer`;
 
-  const changeUrl = () => {
-    const newUrl = document.querySelector('input').value;
-    if(!newUrl) {
-      alert('Please enter a valid url');
+  const changeAccountName = () => {
+    const account = document.querySelector('input').value;
+    if(!account) {
+      alert('Please enter a valid account name');
       return;
     }
-    setUrl(newUrl);
+    window.localStorage.setItem('accountName', account);
+    setAccount(account);
   }
 
   const openNewRendererPage = () => {
@@ -32,8 +34,8 @@ const Main = () => {
   return (
     <div className="App">
       <div className='input-container' style={{fontSize: '20px', padding: '6px', display: 'flex', justifyContent: 'center'}}>
-        <input style={{width: '500px'}} type='text' placeholder='Enter your site url, such as: https://ccorecn.trytalkdesk.com/atlas/apps/conversation' />
-        <button onClick={changeUrl}>Go</button>
+        <input style={{width: '500px'}} type='text' placeholder='Enter your account name, such as: ccorecn' defaultValue={accountName} />
+        <button onClick={changeAccountName}>Go</button>
         <button onClick={openNewRendererPage}>Open a new Renderer Page</button>
         <text>Current Renderer Page count is: {rendererList.length + 1}</text>
       </div>
