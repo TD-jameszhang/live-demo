@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  display: flex;
+  display: block;
 }
 
 .App-logo {
@@ -10,6 +10,7 @@
 
 .flex-item{
   width: 100%;
+  padding: 10px 0;
 }
 
 .flex-item .container{
