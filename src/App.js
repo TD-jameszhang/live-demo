@@ -7,8 +7,8 @@ const Main = () => {
   const [account, setAccount] = useState(accountName);
   const [rendererList, setRendererList] = useState([]);
 
-  const host = `https://${account}.trytalkdesk.com/atlas/apps/conversation?mode=host`;
-  const renderer = `https://${account}.trytalkdesk.com/atlas/headless/conversationmode=renderer`;
+  const host = `https://${account}.mytalkdesk.com/atlas/apps/conversation?mode=host`;
+  const renderer = `https://${account}.mytalkdesk.com/atlas/headless/conversationmode=renderer`;
 
   const changeAccountName = () => {
     const account = document.querySelector('input').value;
