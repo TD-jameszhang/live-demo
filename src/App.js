@@ -3,21 +3,21 @@ import { useState } from 'react';
 
 
 const Main = () => {
-  const accountName = window.localStorage.getItem('accountName') || 'email-prod';
-  const [account, setAccount] = useState(accountName);
+  const prevDomain = window.localStorage.getItem('domain') || 'email-prod.mytalkdesk.com';
+  const [domain, setDomain] = useState(prevDomain);
   const [rendererList, setRendererList] = useState([]);
 
-  const host = `https://${account}.mytalkdesk.com/atlas/apps/conversation?mode=host`;
-  const renderer = `https://${account}.mytalkdesk.com/atlas/headless/conversation?mode=renderer`;
+  const host = `https://${domain}/atlas/apps/conversation?mode=host`;
+  const renderer = `https://${domain}/atlas/headless/conversation?mode=renderer`;
 
   const changeAccountName = () => {
-    const account = document.querySelector('input').value;
-    if(!account) {
+    const newDomain = document.querySelector('input').value;
+    if(!newDomain) {
       alert('Please enter a valid account name');
       return;
     }
-    window.localStorage.setItem('accountName', account);
-    setAccount(account);
+    window.localStorage.setItem('domain', newDomain);
+    setDomain(newDomain);
   }
 
   const openNewRendererPage = () => {
@@ -34,7 +34,7 @@ const Main = () => {
   return (
     <div className="App">
       <div className='input-container' style={{fontSize: '20px', padding: '6px', display: 'flex', justifyContent: 'center'}}>
-        <input style={{width: '500px'}} type='text' placeholder='Enter your account name, such as: ccorecn' defaultValue={accountName} />
+        <input style={{width: '500px'}} type='text' placeholder='Enter your domain, etc: ccorecn.mytalkdesk.com' defaultValue={domain} />
         <button onClick={changeAccountName}>Go</button>
         <button onClick={openNewRendererPage}>Open a new Renderer Page</button>
         <text>Current Renderer Page count is: {rendererList.length + 1}</text>
